@@ -1,0 +1,37 @@
+{% extends 'index_1.html' %}
+{% block content %}
+	<div class="mdl-tabs__panel" id="tabListCategory">
+				<div class="mdl-grid">
+					<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--8-col-desktop mdl-cell--2-offset-desktop">
+						<div class="full-width panel mdl-shadow--2dp">
+							<div class="full-width panel-tittle bg-primary text-center tittles">
+								Lista de Administradores
+							</div>
+							<div class="full-width panel-content">
+								{% for ad in object_list %}
+								<div class="mdl-list">
+									<div class="mdl-list__item mdl-list__item--two-line">
+										<span class="mdl-list__item-primary-content">
+											<i class="zmdi zmdi-account-box mdl-list__item-avatar"></i>
+											<span>{{ad.user.username}}</span>
+											
+										</span>
+								
+										
+									</div>
+									<li class="full-width divider-menu-h"></li>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+						<br>
+						<p class="text-center">
+							<a href="{% url 'registerAdmin' %}"
+								style="font-size: 40px;" 
+							>
+							<i class="zmdi zmdi-account-add"></i></a>
+						</p>
+					</div>
+				</div>
+			</div>
+{% endblock %}

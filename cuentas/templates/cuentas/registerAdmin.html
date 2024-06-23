@@ -1,0 +1,38 @@
+{% extends 'index_1.html' %}
+{% block content %}
+<div class="mdl-tabs__panel is-active" id="tabNewProvider">
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col">
+            <div class="full-width panel mdl-shadow--2dp">
+              <div class="full-width panel-tittle bg-primary text-center tittles">
+                New Admin
+              </div>
+              <div class="full-width panel-content">
+                <form method="POST">
+                  {% csrf_token %}
+                  <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--8-col">
+                          <legend class="text-condensedLight"><i class="zmdi zmdi-border-color"></i> &nbsp; DATA CATEGORY</legend><br>
+                      </div>
+                      {% for field in form %}
+                      <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet">
+                        
+                        {{field}}
+                        <label>{{field.label}}</label>
+                      <!--<span class="mdl-textfield__error">Invalid number</span>-->
+                      </div>
+                      {% endfor %}
+                  </div>
+                  <p class="text-center">
+										<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored bg-primary" id="btn-addCategory" type="submit">
+											<i class="zmdi zmdi-upload"></i>
+										</button>
+										<div class="mdl-tooltip" for="btn-addCategory">Guardar Proveedor</div>
+									</p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}

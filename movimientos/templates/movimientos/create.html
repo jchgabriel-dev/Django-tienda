@@ -1,0 +1,33 @@
+{% extends 'index_1.html' %}
+{% block content %}
+<div class="mdl-tabs__panel is-active" id="tabNewProvider">
+				<div class="mdl-grid">
+					<div class="mdl-cell mdl-cell--12-col">
+						<div class="full-width panel mdl-shadow--2dp">
+							<div class="full-width panel-tittle bg-primary text-center tittles">
+								New Category
+							</div>
+							<div class="full-width panel-content">
+								<form method="POST">
+									{% csrf_token %}
+									<div class="mdl-grid">
+										<div class="mdl-cell mdl-cell--12-col">
+									        <legend class="text-condensedLight"><i class="zmdi zmdi-border-color"></i> &nbsp; DATA CATEGORY</legend><br>
+									    </div>
+									    {% for fields in form %}
+									    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+											{{fields}}
+											<label>{{fields.label}}</label>
+											
+									    </div>
+									    {% endfor %}
+									</div>
+									<input type="submit" name="submit">
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+{% endblock %}
+	

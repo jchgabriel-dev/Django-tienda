@@ -1,0 +1,52 @@
+{% extends 'index_1.html' %}
+{% block content %}
+	<!-- pageContent -->
+		<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+			<div>
+
+				<div class="mdl-grid">
+					<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+					
+						<a href="{% url 'addProduct' %}">AÑADIR</a>
+						<a href="{% url 'listProductPDF' %}" class = "btn btn-succes"><i class="zmdi zmdi-file"></i> PDF</a>
+
+						<div class="full-width text-center" style="padding: 30px 0;">
+							
+							{% for prod in object_list %}
+							<div class="mdl-card mdl-shadow--2dp full-width product-card">
+								<div class="mdl-card__title">
+									<img src="{{prod.img.url}}" width="400" height="200" alt="product">
+								</div>
+								<div class="mdl-card__supporting-text">
+									<small>Stock: {{prod.units}} </small><br>
+									<small>Price: {{prod.price}} $</small><br>
+									<small>Cat: {{prod.cat}} </small>
+								</div>
+								<div class="mdl-card__actions mdl-card--border">
+									{{prod.name}}
+									<a href = "{% url 'deleteProduct' prod.id %}">
+										<i class="zmdi zmdi-delete" style="padding-right: 8px; padding-left: 8px; font-size: 25px;"></i>
+									</a>		
+									<a href = "{% url 'updateProduct' prod.id %}">
+										<i class="zmdi zmdi-edit" style="padding-right: 8px; padding-left: 8px; font-size: 25px;"></i>
+									</a>			
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			
+		</div>
+		
+	</section>
+	<div class="modal fade" id="update" role="dialog">	
+	</div>
+	<div class="modal fade" id="creacion" rolborrare="dialog">	
+	</div>
+	<div class="modal fade" id="borrar" role="dialog">	
+	</div>
+{% endblock %}

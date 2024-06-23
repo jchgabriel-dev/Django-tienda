@@ -1,0 +1,43 @@
+{% extends 'index_2.html' %}
+{% block content %}
+	
+	
+<div class="mdl-tabs__panel is-active" id="tabNewProvider">
+	<div class="mdl-grid">
+		<div class="mdl-cell mdl-cell--12-col">
+			<div class="full-width panel mdl-shadow--2dp">
+				<div class="full-width panel-tittle bg-primary text-center tittles">
+					PAGO
+				</div>
+
+				<div class="full-width panel-content">
+					<div class="full-width product-card">
+						<div class="mdl-card__title">
+							<img src="{{ped.item.img.url}}" width="400" height="200" alt="product">
+						</div>
+						<div class="mdl-card__actions mdl-card--border">
+							Cantidad  : {{ped.quantity}} 		
+						</div>
+						<div class="mdl-card__actions mdl-card--border">
+							Producto  : {{ped.item}} 		
+						</div>
+						<div class="mdl-card__actions mdl-card--border">
+							Precio    : {{ped.item.price}} $
+						</div>
+						<div class="mdl-card__actions mdl-card--border">
+							PRECIO TOTAL  : {{ped.get_price}}	$
+						</div>
+					</div>
+					<div class="full-width product-card">
+					<form method="POST">
+		{% csrf_token %}
+	<button type="submit">Pagar</button> 
+	</form>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

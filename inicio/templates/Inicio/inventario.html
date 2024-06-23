@@ -1,0 +1,54 @@
+{% extends 'index_2.html' %}
+{% block content %}
+  <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+      <div>
+
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+            <form action="#">
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                <label class="mdl-button mdl-js-button mdl-button--icon" for="searchProduct">
+                  <i class="zmdi zmdi-search"></i>
+                </label>
+                <div class="mdl-textfield__expandable-holder">
+                  <input class="mdl-textfield__input" type="text" id="searchProduct">
+                  <label class="mdl-textfield__label"></label>
+                </div>
+              </div>
+            </form>
+          
+            <div class="full-width text-center" style="padding: 30px 0;">
+              
+              {% for prod in object_list %}
+              <div class="mdl-card mdl-shadow--2dp full-width product-card">
+                <div class="mdl-card__title">
+                  <img src="{{prod.img.url}}" width="400" height="200" alt="product">
+                </div>
+                <div class="mdl-card__supporting-text">
+                  <small>Price: {{prod.price}} $</small><br>
+                  <small>Cat: {{prod.cat}} </small>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                  {% if user.is_admin %}
+                  <div></div>
+                  {% elif user.client %}
+                  <a href="{% url 'pedidos' prod.id %}">Comprar</a>
+                  {% endif %}
+
+                  {{prod.name}}
+
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      
+    </div>
+    
+  </section>
+ 
+{% endblock %}

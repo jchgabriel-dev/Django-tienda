@@ -1,0 +1,36 @@
+{% extends 'index_1.html' %}
+{% block content %}
+
+<div class="mdl-grid">
+	<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+	<div class="table-responsive">
+		<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Nombre</th>
+				
+				<th scope="col">Stock</th>
+				<th scope="col">Accion</th>
+		
+			</tr>
+		</thead>
+		<tbody>
+			{% for mov in object_list %}
+			<tr>
+				<td scope="row">{{mov.prod.name}}</td>
+				<td>{{mov.quant}}</td>
+				{% if mov.entry == 1 %}
+					<td>entrada</td>					
+				{% elif mov.entry == 2 %}
+					<td>salida</td>					
+				{% endif %}
+				
+			</tr>
+			{% endfor %}
+		</tbody>
+		</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

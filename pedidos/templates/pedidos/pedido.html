@@ -1,0 +1,49 @@
+{% extends 'index_2.html' %}
+{% block content %}
+<div class="mdl-tabs__panel is-active" id="tabNewProvider">
+	<div class="mdl-grid">
+		<div class="mdl-cell mdl-cell--12-col">
+			<div class="full-width panel mdl-shadow--2dp">
+				<div class="full-width panel-tittle bg-primary text-center tittles">
+					{{pro.name}}
+				</div>
+
+				<div class="full-width panel-content">
+					<div class="full-width product-card">
+						<div class="mdl-card__title">
+							<img src="{{pro.img.url}}" width="400" height="200" alt="product">
+						</div>
+						<div class="mdl-card__actions mdl-card--border">
+							Precio   : {{pro.price}} $		
+						</div>
+						<div class="mdl-card__actions mdl-card--border">
+							Categoria: {{pro.cat}}		
+						</div>
+					</div>
+					<div class="full-width product-card">
+					<form method="POST">
+						{% csrf_token %}
+						<div class="mdl-grid">
+							<div class="mdl-cell mdl-cell--12-col">
+								<legend class="text-condensedLight"><i class="zmdi zmdi-border-color"></i> &nbsp; PEDIDO</legend><br>
+							</div>
+
+							{% for fields in form %}
+							<div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+								{{fields}}
+								<label>{{fields.label}}</label>
+
+							</div>
+							{% endfor %}
+						</div>
+						<input type="submit" value="PEDIR">
+					</form>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+	

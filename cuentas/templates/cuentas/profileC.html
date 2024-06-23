@@ -1,0 +1,41 @@
+{% extends 'index_2.html' %}
+{% block content %}
+	<div>
+    
+        <img 
+            style="height:200px; width:200px; border-radius:50%;" 
+            src="{{ user.client.photo.url }}"
+            class="mx-auto d-block"
+        >
+        <br>
+        <p class="text-center text-condensedLight" style="font-size: 50px;">
+            Hola {{ user.username }}
+        </p>
+            
+        <div>
+            <label>Nombre</label>
+            <input readonly=readonly value="{{ user.first_name }}" class="form-control">
+            <label>Apellido</label>
+            <input readonly=readonly value="{{ user.last_name }}" class="form-control">
+        </div>
+        <form class="" action="" method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  {% for field in u_form %}
+                  <div class="form-group">
+                      <label for="{{ field.id_for_label }}">{{field.label}}</label>
+                      {{ field }}
+                  </div>    
+                  {% endfor %}
+      
+                  {% for field in a_form %}
+                  <div class="form-group">
+                      <label for="{{ field.id_for_label }}">{{field.label}}</label>
+                      {{field}}
+                  </div>
+                  {% endfor %}
+        <input type="submit" value="Guardar" class = "btn btn-succes">
+        </form>
+        <a href="{% url 'password' %}" class = "btn btn-succes">Cambiar Contraseña</a>
+        
+    </div>
+{% endblock %}

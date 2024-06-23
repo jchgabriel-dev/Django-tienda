@@ -1,0 +1,53 @@
+{% extends 'index_1.html' %}
+{% block content %}
+		<div class="a">
+			<div class="mdl-tabs__panel">
+				<div class="mdl-grid">
+					<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--8-col-desktop mdl-cell--2-offset-desktop">
+						<div class="full-width panel mdl-shadow--2dp">
+							<div class="full-width panel-tittle bg-primary text-center tittles">
+								Lista de Proveedores
+							</div>
+							<div class="full-width panel-content">
+								{% for prov in object_list %}
+									<div class="mdl-list">
+									<div class="mdl-list__item mdl-list__item--two-line">
+										<span class="mdl-list__item-primary-content">
+											<i class="zmdi zmdi-truck mdl-list__item-avatar"></i>
+											<span>
+												{{prov.persona}}:
+												{{prov.telefono}}
+											</span>
+											<span class="mdl-list__item-sub-title">
+												{{prov.razonSocial}}
+											</span>
+											<p class="mdl-list__item-sub-title">
+												{% if prov.estado == 1 %}
+													Estado: Activo
+												{% else %}
+													Estado: Inactivo	
+												{% endif %}
+											</p>
+										</span>
+										<a class="mdl-list__item-secondary-action" href="{% url 'updateProvider' prov.id %}">
+											<i class="zmdi zmdi-edit" style="padding-right: 8px; padding-left: 8px; font-size: 25px;"></i>
+										</a>
+										<a class="mdl-list__item-secondary-action" href="{% url 'deleteProvider' prov.id %}">
+											<i class="zmdi zmdi-delete" style="padding-right: 8px; padding-left: 8px; font-size: 25px;"></i>
+										</a>
+									</div>
+								</div>
+								{% endfor %}
+							</div>
+						</div>
+						<p class="text-center">
+							<a href="{% url 'addProvider' %}"
+								style="font-size: 40px;" 
+							>
+							<i class="zmdi zmdi-plus"></i></a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+{% endblock %}	

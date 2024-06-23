@@ -1,0 +1,31 @@
+{% extends 'index_1.html' %}
+{% block content %}
+	
+<div class="mdl-grid">
+	<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+	<div class="table-responsive">
+		<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Cliente</th>
+				<th scope="col">Producto</th>
+				<th scope="col">Cantidad</th>
+				<th scope="col">Total</th>
+		
+			</tr>
+		</thead>
+		<tbody>
+			{% for ven in object_list %}
+			<tr>
+				<td scope="row">{{ven.user}}</td>
+				<td>{{ven.ped.item}}</td>
+				<td>{{ven.ped.quantity}}</td>
+				<td>  $ {{ven.ped.get_price}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	</div>
+	</div>
+</div>	
+{% endblock %}

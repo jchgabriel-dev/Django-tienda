@@ -1,0 +1,105 @@
+{% extends 'index_2.html' %}
+{% load static %}
+{% block content %}
+<section class="cart_area">
+      <div class="container">
+          <div class="cart_inner">
+              <div class="table-responsive">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th scope="col">Product</th>
+                              <th scope="col">Price</th>
+                              <th scope="col">Quantity</th>
+                              <th scope="col">Total</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+
+                          {% for item in items %}
+                          <tr>
+                              <td>
+                                  <div class="media">
+                                      <div class="d-flex">
+                                          <img src="" alt="">
+                                      </div>
+                                      <div class="media-body">
+                                          <p>{{item.product.name}}</p>
+                                      </div>
+                                  </div>
+                              </td>
+                              <td>
+                                <div class="media-body">
+                                          <p>{{item.product.price}}</p>
+                                      </div>
+                            
+                              </td>
+                              <td>
+                                
+                                  <div class="media-body">
+                                          <p>{{item.quantity}}</p>
+                                      </div>
+                              </td>
+                              <td>
+                                <div class="media-body">
+                                          <p>{{item.get_total}}</p>
+                                      </div>
+                              
+                              </td>
+                          </tr>
+                          {% endfor %}
+                          
+                          <tr>
+                              <td>
+
+                              </td>
+                              <td>
+
+                              </td>
+                              <td>
+                                  <h5>Subtotal</h5>
+                              </td>
+                              <td>
+                                  <h5>{{order.get_cart_total}}</h5>
+                              </td>
+                              
+                          </tr>
+<tr>
+                              <td>
+
+                              </td>
+                              <td>
+
+                              </td>
+                                <td>
+                                  <h5>Cantidad</h5>
+                              </td>
+                              <td>
+                                  <h5>{{order.get_cart_items}}</h5>
+                              </td>
+                              
+                          </tr>
+                          <tr class="out_button_area">
+                              <td class="d-none-l">
+
+                              </td>
+                              <td class="">
+
+                              </td>
+                              <td>
+
+                              </td>
+                              <td>
+                                  <div class="checkout_btn_inner d-flex align-items-center">
+                                      <a class="gray_btn" href="#">Continue</a>
+                                      <a class="primary-btn ml-2" href="#">Proceed to checkout</a>
+                                  </div>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+  </section>
+{% endblock %}

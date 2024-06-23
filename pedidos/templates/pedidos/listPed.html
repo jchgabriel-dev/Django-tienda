@@ -1,0 +1,38 @@
+{% extends 'index_2.html' %}
+{% block content %}
+	
+<div class="mdl-grid">
+	<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+	<div class="table-responsive">
+		<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Producto</th>
+				
+				<th scope="col">Cantidad</th>
+				<th scope="col">Estado</th>
+				<th scope="col">Accion</th>
+		
+			</tr>
+		</thead>
+		<tbody>
+			{% for ped in object_list %}
+			<tr>
+				<td scope="row">{{ped.item}}</td>
+				<td>{{ped.quantity}}</td>
+				{% if ped.pay == True %}
+				<td>Pagado</td>
+				<td>Pagado <i class="zmdi zmdi-washing-machine"></i></td>
+				{% else %}
+				<td><a href="{% url 'checkout' ped.id %}">Pagar</a> </td>
+				<td><a href="{% url 'deletePed' ped.id %}">Delete <i class="zmdi zmdi-widgets"></i></a> </td>
+				{% endif %}
+			</tr>
+						
+			{% endfor %}
+		</tbody>
+	</table>
+	</div>
+	</div>
+</div>
+{% endblock %}

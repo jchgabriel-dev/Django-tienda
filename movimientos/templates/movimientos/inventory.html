@@ -1,0 +1,38 @@
+{% extends 'index_1.html' %}
+{% block content %}
+	<!-- pageContent -->
+	<div class="mdl-grid">
+		<div class="mdl-cell mdl-cell--4-col-phone mdl-cell--8-col-tablet mdl-cell--12-col-desktop">
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col">Name</th>
+						<th scope="col">Code</th>
+						<th scope="col">Stock</th>
+						<th scope="col">Price</th>
+						<th scope="col">Options</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for prod in prods %}
+					<tr>
+						<td scope="col">{{prod.name}}</td>
+						<td>Product Code</td>
+						<td>{{prod.units}}</td>
+						<td>{{prod.price}}</td>
+						<td>
+						<a class="mdl-list__item-secondary-action" href="{% url 'update' prod.id %}">
+							<i class="zmdi zmdi-edit" style="padding-right: 8px; padding-left: 8px; font-size: 25px;"></i>
+						</a>
+						</td>
+					</tr>				
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		</div>
+	</div>						
+			
+	
+{% endblock %}
